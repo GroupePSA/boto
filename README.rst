@@ -1,4 +1,21 @@
 ####
+Disclaimer
+####
+
+This fork is to fix `connection.py <boto/connection.py>`__ for supporting Python3 version for ssl proxy and proxy authentication usage:
+
+- Issue: `boto#3561 <https://github.com/boto/boto/issues/3561>`__
+- Add Python3 ssl proxy with `boto#2718 <https://github.com/boto/boto/pull/2718>`__ PR / `3cf5c <https://github.com/root360/boto/commit/3cf5cbad0f6167cabe5e956be79b9f50db35dafc>`__ commit merge
+- Fix http proxy authentication for Python3
+
+####
+Deprecation notice
+####
+
+**This package is no longer maintained and has been replaced by** `Boto3 <https://github.com/boto/boto3>`__.
+**Issues and pull requests are not reviewed. If you are having an issue with the** `Boto3 <https://github.com/boto/boto3>`__ **package or the** `AWS CLI <https://github.com/aws/aws-cli>`__, **please open an issue on their respective repositories.**
+
+####
 boto
 ####
 boto 2.49.0
