@@ -844,7 +844,7 @@ class AWSAuthConnection(object):
         else:
             # Fallback for old Python without ssl.wrap_socket
             if hasattr(http_client, 'ssl'):
-                sslSock = http_client.ssl.SSLSocket(sock)
+                sslSock = http_client.ssl.wrap_socket(sock)
             else:
                 sslSock = socket.ssl(sock, None, None)
                 sslSock = http_client.FakeSocket(sock, sslSock)
@@ -858,8 +858,8 @@ class AWSAuthConnection(object):
         return path
 
     def get_proxy_auth_header(self):
-        auth = encodebytes(self.proxy_user + ':' + self.proxy_pass)
-        return {'Proxy-Authorization': 'Basic %s' % auth}
+        auth = encodebytes((self.proxy_user + ':' + self.proxy_pass).encode())
+        return {'Proxy-Authorization': 'Basic %s' % auth.decode()}
 
     # For passing proxy information to other connection libraries, e.g. cloudsearch2
     def get_proxy_url_with_auth(self):
